@@ -41,6 +41,7 @@ class Matrix:
             return matrix
 
 def Encrypt(matrixes,message):
+    message = message.replace(' ','')
     if (len(message)%2!=0):
         message+='x'
     encryptedMessage=''
@@ -72,9 +73,9 @@ def Decrypt(matrixes,message):
 
 
 matrixes = Matrix("secret","keyword")
-message= "QlirimMatoshi"
+message = input("Write down the message you want to encrypt: ")
 encrypted = Encrypt(matrixes,message)
 print("The encrypted message is: ",encrypted)
 decrypted = Decrypt(matrixes,encrypted)
-print("The encrypted message is: ",decrypted)
+print("The decrypted message is: ",decrypted)
 
