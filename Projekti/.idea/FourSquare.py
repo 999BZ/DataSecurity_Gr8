@@ -56,8 +56,25 @@ def Encrypt(matrixes,message):
         encryptedMessage+=matrixes.UR[i1][j2]+matrixes.DL[i2][j1]
     return encryptedMessage
 
+def Decrypt(matrixes,message):
+    decryptedMessage=''
+    i1,i2,j1,j2 = 0,0,0,0
+    for k in range(0, len(message),2):
+        for (i,j),value in np.ndenumerate(matrixes.UR):
+            if(matrixes.UR[i,j] == message.upper()[k]):
+                i1=i
+                j1=j
+            if(matrixes.DL[i,j] == message.upper()[k+1]):
+                i2=i
+                j2=j
+        decryptedMessage+=matrixes.DR[i1][j2]+matrixes.UL[i2][j1]
+    return decryptedMessage
+
 
 matrixes = Matrix("secret","keyword")
-message= "HELLOWORLD"
-print("The encrypted message is: ",Encrypt(matrixes,message))
+message= "QlirimMatoshi"
+encrypted = Encrypt(matrixes,message)
+print("The encrypted message is: ",encrypted)
+decrypted = Decrypt(matrixes,encrypted)
+print("The encrypted message is: ",decrypted)
 
