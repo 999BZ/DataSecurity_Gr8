@@ -2,6 +2,7 @@ import string
 from more_itertools import unique_everseen
 import numpy as np
 
+letter_to_drop = input("Which letter of the alphabet do you want to drop? ")
 class Matrix:
     UL=[]
 
@@ -22,7 +23,8 @@ class Matrix:
         if keyword:
             keywordNR = ''.join(unique_everseen(keyword))
             matrix = np.empty((5, 5), dtype='U1')
-            alphabet = 'ABCDEFGHIKLMNOPQRSTUVWXYZ'
+            alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+            alphabet = alphabet.replace(letter_to_drop.upper(),'')
             temp=0
             for (i, j), value in np.ndenumerate(matrix):
                 if(temp<len(keywordNR)):
@@ -31,13 +33,14 @@ class Matrix:
                     alphabet = alphabet.replace(keywordNR[5*i+j].upper(),'')
                     temp+=1
                 else:
-                    matrix[i,j]=alphabet[5*i+j]
+                     matrix[i,j]=alphabet[5*i+j]
             return matrix
         else:
             matrix = np.empty((5, 5), dtype='U1')
-            alphabet = 'ABCDEFGHIKLMNOPQRSTUVWXYZ'
+            alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+            alphabet = alphabet.replace(letter_to_drop.upper(),'')
             for (i, j), value in np.ndenumerate(matrix):
-                matrix[i,j]=alphabet[5*i+j]
+                  matrix[i,j]=alphabet[5*i+j]
             return matrix
 
 def Encrypt(matrixes,message):
