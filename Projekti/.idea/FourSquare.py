@@ -10,7 +10,9 @@ while True:
     if len(key1) > 25 or len(key2) > 25:
         print("Keys must be less than or equal to 25 characters long.")
     elif len(key1) < 1 or len(key2) < 1:
-        print("Keys must be at least 1 character long.")
+        print("Keys cannot be empty!")
+    elif any(char.isdigit() for char in key1) or any(char.isdigit() for char in key2):
+        print("Keys cannot contain any numbers.")
     else:
         break
 
