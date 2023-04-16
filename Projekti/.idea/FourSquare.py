@@ -2,7 +2,15 @@ import string
 from more_itertools import unique_everseen
 import numpy as np
 
-letter_to_drop = input("Which letter of the alphabet do you want to drop? ")
+while True:
+    letter_to_drop = input("Which letter of the alphabet do you want to drop? ")
+    if len(letter_to_drop)  == 1 & letter_to_drop.isalpha():
+        break
+    elif letter_to_drop.isnumeric():
+        print("Please write a letter!")
+    else:
+        print("Please write just one letter!")
+        
 class Matrix:
     UL=[]
 
