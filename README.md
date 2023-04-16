@@ -15,8 +15,8 @@ procesi vazhdon për të gjitha shkronjat e nëse numri i tyre është tek atëh
 proces revers i enkriptimit që kryhet përmes funksionit Decrypt.
 
 Libraritë e përdorura: 
-import string - për manipulim me stringje
-from more_itertools import unique_everseen - për shmangien e përsëritjes së shkronjave në çelësa 
+import string - për manipulim me stringje,
+from more_itertools import unique_everseen - për shmangien e përsëritjes së shkronjave në çelësa,
 import numpy as np - për krijimin e matricës 
 
 Anëtarët: Arnis Hoxha, Astrit Krasniqi, Besmira Berisha, Blendi Zeqiri
