@@ -2,6 +2,18 @@ import string
 from more_itertools import unique_everseen
 import numpy as np
 
+alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+while True:
+    key1 = input("Enter the first key (1-25 characters): ")
+    key2 = input("Enter the second key (1-25 characters): ")
+    if len(key1) > 25 or len(key2) > 25:
+        print("Keys must be less than or equal to 25 characters long.")
+    elif len(key1) < 1 or len(key2) < 1:
+        print("Keys must be at least 1 character long.")
+    else:
+        break
+
 while True:
     letter_to_drop = input("Which letter of the alphabet do you want to drop? ")
     if len(letter_to_drop)  == 1 & letter_to_drop.isalpha():
@@ -10,7 +22,8 @@ while True:
         print("Please write a letter!")
     else:
         print("Please write just one letter!")
-        
+
+
 class Matrix:
     UL=[]
 
@@ -28,10 +41,11 @@ class Matrix:
         self.DR=self.createMatrix()
 
     def createMatrix(self,keyword=None):
+        global alphabet
         if keyword:
             keywordNR = ''.join(unique_everseen(keyword))
             matrix = np.empty((5, 5), dtype='U1')
-            alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
             alphabet = alphabet.replace(letter_to_drop.upper(),'')
             temp=0
             for (i, j), value in np.ndenumerate(matrix):
@@ -83,7 +97,9 @@ def Decrypt(matrixes,message):
     return decryptedMessage
 
 
-matrixes = Matrix("secret","keyword")
+
+
+matrixes = Matrix(key1, key2)
 message = input("Write down the message you want to encrypt: ")
 encrypted = Encrypt(matrixes,message)
 print("The encrypted message is: ",encrypted)
