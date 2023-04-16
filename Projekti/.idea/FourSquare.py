@@ -2,7 +2,7 @@ import string
 from more_itertools import unique_everseen
 import numpy as np
 
-alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
 
 while True:
     key1 = input("Enter the first key (1-25 characters): ")
@@ -43,11 +43,11 @@ class Matrix:
         self.DR=self.createMatrix()
 
     def createMatrix(self,keyword=None):
-        global alphabet
+
         if keyword:
             keywordNR = ''.join(unique_everseen(keyword))
             matrix = np.empty((5, 5), dtype='U1')
-
+            alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
             alphabet = alphabet.replace(letter_to_drop.upper(),'')
             temp=0
             for (i, j), value in np.ndenumerate(matrix):
